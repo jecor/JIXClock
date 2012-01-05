@@ -24,13 +24,13 @@
 //----------------------------------------------------------------------------------------
 
 unsigned int secondsBlinkMode(uint8_t hourLeft, 
-                         uint8_t hourRight, 
-                         uint8_t minuteLeft, 
-                         uint8_t minuteRight, 
-                         uint8_t secondLeft, 
-                         uint8_t secondRight, 
-                         uint8_t luminosity,
-                         bool    hold);
+                              uint8_t hourRight, 
+                              uint8_t minuteLeft, 
+                              uint8_t minuteRight, 
+                              uint8_t secondLeft, 
+                              uint8_t secondRight, 
+                              uint8_t luminosity,
+                              bool    hold);
 
                            
 //----------------------------------------------------------------------------------------

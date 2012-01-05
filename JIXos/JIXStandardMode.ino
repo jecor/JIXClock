@@ -110,8 +110,8 @@ const prog_uint8_t standardThrees2[standardThreesNbPieces2 * standardThreesSize]
 
 //----------------------------------------------------------------------------------------
 const uint8_t * standardThrees[3] = { (const uint8_t *)standardThrees0, 
-                                   (const uint8_t *)standardThrees1, 
-                                   (const uint8_t *)standardThrees2
+                                      (const uint8_t *)standardThrees1, 
+                                      (const uint8_t *)standardThrees2
                                  };
                                    
 const uint8_t standardThreesNbPieces[3] = { standardThreesNbPieces0,
@@ -690,15 +690,15 @@ const prog_uint8_t standardNines9[standardNinesNbPieces9 * standardNinesSize] PR
 
 //----------------------------------------------------------------------------------------
 const uint8_t * standardNines[10] = { (const uint8_t *)standardNines0, 
-                                   (const uint8_t *)standardNines1, 
-                                   (const uint8_t *)standardNines2, 
-                                   (const uint8_t *)standardNines3, 
-                                   (const uint8_t *)standardNines4, 
-                                   (const uint8_t *)standardNines5, 
-                                   (const uint8_t *)standardNines6,
-                                   (const uint8_t *)standardNines7,
-                                   (const uint8_t *)standardNines8,
-                                   (const uint8_t *)standardNines9 
+                                      (const uint8_t *)standardNines1, 
+                                      (const uint8_t *)standardNines2, 
+                                      (const uint8_t *)standardNines3, 
+                                      (const uint8_t *)standardNines4, 
+                                      (const uint8_t *)standardNines5, 
+                                      (const uint8_t *)standardNines6,
+                                      (const uint8_t *)standardNines7,
+                                      (const uint8_t *)standardNines8,
+                                      (const uint8_t *)standardNines9 
                                  };
                                    
 const uint8_t standardNinesNbPieces[10] = { standardNinesNbPieces0,

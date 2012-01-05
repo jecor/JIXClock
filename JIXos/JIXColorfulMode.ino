@@ -33,13 +33,13 @@ unsigned int colorfulModeFast(uint8_t hourLeft,
                               bool    hold);
 
 unsigned int colorfulModeMedium(uint8_t hourLeft, 
-                           uint8_t hourRight, 
-                           uint8_t minuteLeft, 
-                           uint8_t minuteRight, 
-                           uint8_t secondLeft, 
-                           uint8_t secondRight, 
-                           uint8_t luminosity,
-                           bool    hold);
+                                uint8_t hourRight, 
+                                uint8_t minuteLeft, 
+                                uint8_t minuteRight, 
+                                uint8_t secondLeft, 
+                                uint8_t secondRight, 
+                                uint8_t luminosity,
+                                bool    hold);
                            
 unsigned int colorfulModeSlow(uint8_t hourLeft, 
                               uint8_t hourRight, 
