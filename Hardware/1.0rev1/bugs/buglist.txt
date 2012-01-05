@@ -1,0 +1,68 @@
+-----------------------------------------
+JIX Clock 1.0rev1 Bug List
+-----------------------------------------
+
+
+===========================================================
+Bug #001: Swapped RTC VCC1/VCC2 power supplies
+===========================================================
+
+Description: VCC2, which is the regular power input, without charging capabilities, is connected to the super capacitor whereas VCC1 is connected to the mains supply.
+
+Consequences: the supercapacitor is never charged, and since the power supply is always 0 on VCC2, VCC1 is always chosen by the internal supply comparator. This results in loss of the hour and clock settings when unplugging the JIX Clock.
+
+Solution: cut the traces indicated by blue circles on figure 1 and 2 (one trace to cut on each side of the pcb). Solder two wires between VCC1/VCC2 and the corresponding vias, as indicated by arrows on figure 1.
+
+===========================================================
+Bug #002: Wrong pull-up design for S1 qnd S2 switches
+===========================================================
+
+Description: the design of the resistor's pull-up connection for S1 and S2 switches is faulty. The resistors should be placed between the ground and the switches which would then give a pull-down.
+
+Consequences: S1/S2 not working at all. If the software is bugged and output '1' on pins D4 and D12 this could result in a short-circuit and damage the MCU.
+
+Solution: cut the traces indicated by blue circles on figure 3 (two traces to cut). Solder two wires between the resistors and vias, as indicated by arrows on figure 3.
+
+===========================================================
+Bug #003: D22 and D23 LEDS are swapped
+===========================================================
+
+Description: the connection of LEDS D22 and D23 does not follow the global scheme of connection increasing LED numbers to increasing TLC channels. More precisely, D22 R, G, B pins should be connected to OUT0, OUT1, OUT2 of U5 and D23 R, G, B should be connected to OUT3, OUT4, OUT5.
+
+Consequences: when using software computatons to access the right LEDs, the LEDS actually accessed are swapped.
+
+Solution: software workaround. Create a special case for D22 and D23, swapping the TCL channels used.
+
+===========================================================
+Bug #004: Crystal traces/location does not follow Maxim's 
+recommendations
+===========================================================
+
+Description: the crystal connected to the RTC does not follow Maxim's recommendation:
+ 1) a trace is located nearby (this is however a supply trace)
+ 2) there is no ground plane around the crystal's location
+ 3) for good practice, the crystal should have a contact with the pcb's ground plane, and be soldered on it. Here the crystal cannot have contact with the pcb, but can cause problems when the pcb is embedded in the enclosure.
+
+Consequences: clock inaccuracy. This can result in about 2 minutes advance per month.
+
+Solution: none (possibly software correction of inaccuracy after measurement).
+
+===========================================================
+Bug #005: Small inaccuracy of placement for supply connector
+===========================================================
+
+Description: the supply connector should be 0.8 mm on the left of its actual location to be fully aligned with enclosure's hole.
+
+Consequence: esthetic. The power connector can still be connected.
+
+Solution: none
+
+===========================================================
+Bug #006: MCU's AREF pin is connected to GND
+===========================================================
+
+Description: the AREF pin is connected to GND. This is not suitable, as the pin should be connected to a reference for the MAX voltage measured, and this would anyway require a special component on the pcb to provide an accurate reference voltage.
+
+Consequence: minor. By default, the JIX Clock does not use the analog pins. Future uses of that pin can rely on the internal reference which is used by default.
+
+Solution: none. use INTERNAL ref instead.

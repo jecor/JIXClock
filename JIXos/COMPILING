@@ -1,0 +1,6 @@
+To compile this software, you will need the TLC5940 library available here:
+http://code.google.com/p/tlc5940arduino/
+
+Note that you will need to change the constant NUM_TLC in tlc_config.h to 5 for JIXos to work.
+
+In addition, please compile for board "Arduino Duemilanove or Nano w/ ATMega 328".
