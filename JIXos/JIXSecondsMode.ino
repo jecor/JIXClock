@@ -40,9 +40,9 @@ unsigned int secondsMode(uint8_t hourLeft,
 extern const unsigned int standardThreesSize;
 extern const unsigned int standardSixSize;
 extern const unsigned int standardNinesSize;
-extern const bool * standardThrees[];
-extern const bool * standardSix[];
-extern const bool * standardNines[];
+extern const uint8_t * standardThrees[];
+extern const uint8_t * standardSix[];
+extern const uint8_t * standardNines[];
 extern const uint8_t standardThreesNbPieces[];
 extern const uint8_t standardSixNbPieces[];
 extern const uint8_t standardNinesNbPieces[];
@@ -51,7 +51,7 @@ extern const uint8_t standardColorDifference;
 //----------------------------------------------------------------------------------------
 // Constants
 //----------------------------------------------------------------------------------------
-const bool secondsSix[6 * 6] = 
+const prog_uint8_t secondsSix[6 * 6] PROGMEM = 
             { 0, 0,
               0, 0,
               0, 0,
@@ -77,7 +77,7 @@ const bool secondsSix[6 * 6] =
               1, 0  
             };
             
-const bool secondsNines[10 * 9] = 
+const prog_uint8_t secondsNines[10 * 9] PROGMEM = 
             { 0, 0, 0,
               0, 0, 0,
               0, 0, 0,
@@ -238,13 +238,13 @@ unsigned int secondsMode(uint8_t hourLeft,
 // pieces: array of variant ordered per digit
 // piecesSize: size of the pieces
 // h, s, l: HSL color used to display the piece
-void secondsGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t pieceNumber, const bool ** pieces, uint8_t piecesSize, uint8_t luminosity, uint8_t color)
+void secondsGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t pieceNumber, const uint8_t ** pieces, uint8_t piecesSize, uint8_t luminosity, uint8_t color)
 {  
   for (uint8_t ledOffset=0; ledOffset < piecesSize; ledOffset++)
   {
-    const bool *led_active = pieces[value] + piecesSize*pieceNumber + ledOffset;
+    uint8_t led_active = pgm_read_byte_near(pieces[value] + piecesSize*pieceNumber + ledOffset);
     
-    if (*led_active)
+    if (led_active)
     {
       ledsSetColor(ledStartNumber + ledOffset, color*8, 255, luminosity);
     }
@@ -255,22 +255,22 @@ void secondsGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t pieceN
   }
 }
 
-void secondsGenericDisplay2(uint8_t ledStartNumber, uint8_t value, uint8_t value2, const bool * pieces, uint8_t piecesSize, uint8_t luminosity, uint8_t color, uint8_t color2)
+void secondsGenericDisplay2(uint8_t ledStartNumber, uint8_t value, uint8_t value2, const uint8_t * pieces, uint8_t piecesSize, uint8_t luminosity, uint8_t color, uint8_t color2)
 {  
   for (uint8_t ledOffset=0; ledOffset < piecesSize; ledOffset++)
   {
-    const bool *led_active  = pieces + value*piecesSize + ledOffset;
-    const bool *led_active2 = pieces + value2*piecesSize + ledOffset;
+    uint8_t led_active = pgm_read_byte_near(pieces + value*piecesSize + ledOffset);
+    uint8_t led_active2 = pgm_read_byte_near(pieces + value2*piecesSize + ledOffset);
     
-    if ((*led_active) && (!*led_active2))
+    if (led_active && (!led_active2))
     {
       ledsSetColor(ledStartNumber + ledOffset, color*8, 255, luminosity);
     }
-    else if ((!*led_active) && (*led_active2))
+    else if ((!led_active) && (led_active2))
     {
       ledsSetColor(ledStartNumber + ledOffset, color*8, 0, 8);
     }
-    else if ((*led_active) && (*led_active2))
+    else if ((led_active) && (led_active2))
     {
       ledsSetColor(ledStartNumber + ledOffset, color*8, 160, luminosity);
     }

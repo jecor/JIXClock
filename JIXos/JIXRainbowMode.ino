@@ -66,9 +66,9 @@ void rainbowMode(uint8_t hourLeft,
 extern const unsigned int standardThreesSize;
 extern const unsigned int standardSixSize;
 extern const unsigned int standardNinesSize;
-extern const bool * standardThrees[];
-extern const bool * standardSix[];
-extern const bool * standardNines[];
+extern const uint8_t * standardThrees[];
+extern const uint8_t * standardSix[];
+extern const uint8_t * standardNines[];
 extern const uint8_t standardThreesNbPieces[];
 extern const uint8_t standardSixNbPieces[];
 extern const uint8_t standardNinesNbPieces[];
@@ -238,13 +238,13 @@ void rainbowMode(uint8_t hourLeft,
 // pieces: array of variant ordered per digit
 // piecesSize: size of the pieces
 // h, s, l: HSL color used to display the piece
-void rainbowGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t pieceNumber, const bool ** pieces, uint8_t piecesSize, uint8_t h, uint8_t luminosity)
+void rainbowGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t pieceNumber, const uint8_t ** pieces, uint8_t piecesSize, uint8_t h, uint8_t luminosity)
 {  
   for (uint8_t ledOffset=0; ledOffset < piecesSize; ledOffset++)
   {
-    const bool *led_active = pieces[value] + piecesSize*pieceNumber + ledOffset;
+    uint8_t led_active = pgm_read_byte_near(pieces[value] + piecesSize*pieceNumber + ledOffset);
     
-    if (*led_active)
+    if (led_active)
     {
       ledsSetColor(ledStartNumber + ledOffset, h, 255, luminosity);
     }

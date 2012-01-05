@@ -72,7 +72,7 @@ const unsigned int standardThreesSize  = 3;
 //----------------------------------------------------------------------------------------
 const uint8_t standardThreesNbPieces0 = 1;
 
-const bool standardThrees0[standardThreesNbPieces0 * standardThreesSize] = 
+const prog_uint8_t standardThrees0[standardThreesNbPieces0 * standardThreesSize] PROGMEM = 
             { 0,
               0,
               0,  
@@ -81,7 +81,7 @@ const bool standardThrees0[standardThreesNbPieces0 * standardThreesSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardThreesNbPieces1 = 3;
 
-const bool standardThrees1[standardThreesNbPieces1 * standardThreesSize] = 
+const prog_uint8_t standardThrees1[standardThreesNbPieces1 * standardThreesSize] PROGMEM = 
             { 1,
               0,
               0,
@@ -98,7 +98,7 @@ const bool standardThrees1[standardThreesNbPieces1 * standardThreesSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardThreesNbPieces2 = 2;
 
-const bool standardThrees2[standardThreesNbPieces2 * standardThreesSize] = 
+const prog_uint8_t standardThrees2[standardThreesNbPieces2 * standardThreesSize] PROGMEM = 
             { 1,
               1,
               0,
@@ -109,9 +109,9 @@ const bool standardThrees2[standardThreesNbPieces2 * standardThreesSize] =
             };
 
 //----------------------------------------------------------------------------------------
-const bool * standardThrees[3] = { (const bool *)standardThrees0, 
-                                   (const bool *)standardThrees1, 
-                                   (const bool *)standardThrees2
+const uint8_t * standardThrees[3] = { (const uint8_t *)standardThrees0, 
+                                   (const uint8_t *)standardThrees1, 
+                                   (const uint8_t *)standardThrees2
                                  };
                                    
 const uint8_t standardThreesNbPieces[3] = { standardThreesNbPieces0,
@@ -128,7 +128,7 @@ const unsigned int standardSixSize  = 6;
 //----------------------------------------------------------------------------------------
 const uint8_t standardSixNbPieces0 = 1;
 
-const bool standardSix0[standardSixNbPieces0 * standardSixSize] = 
+const prog_uint8_t standardSix0[standardSixNbPieces0 * standardSixSize] PROGMEM = 
             { 0, 0,
               0, 0,
               0, 0 
@@ -137,7 +137,7 @@ const bool standardSix0[standardSixNbPieces0 * standardSixSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardSixNbPieces1 = 6;
 
-const bool standardSix1[standardSixNbPieces1 * standardSixSize] = 
+const prog_uint8_t standardSix1[standardSixNbPieces1 * standardSixSize] PROGMEM = 
             { 1, 0,
               0, 0,
               0, 0,
@@ -166,7 +166,7 @@ const bool standardSix1[standardSixNbPieces1 * standardSixSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardSixNbPieces2 = 9;
 
-const bool standardSix2[standardSixNbPieces2 * standardSixSize] = 
+const prog_uint8_t standardSix2[standardSixNbPieces2 * standardSixSize] PROGMEM = 
             { 1, 1,
               0, 0,
               0, 0,
@@ -207,7 +207,7 @@ const bool standardSix2[standardSixNbPieces2 * standardSixSize] =
 //----------------------------------------------------------------------------------------            
 const uint8_t standardSixNbPieces3 = 9;
 
-const bool standardSix3[standardSixNbPieces3 * standardSixSize] = 
+const prog_uint8_t standardSix3[standardSixNbPieces3 * standardSixSize] PROGMEM = 
             { 1, 1,
               1, 0,
               0, 0,
@@ -248,7 +248,7 @@ const bool standardSix3[standardSixNbPieces3 * standardSixSize] =
 //----------------------------------------------------------------------------------------            
 const uint8_t standardSixNbPieces4 = 9;
 
-const bool standardSix4[standardSixNbPieces4 * standardSixSize] = 
+const prog_uint8_t standardSix4[standardSixNbPieces4 * standardSixSize] PROGMEM = 
             { 1, 1,
               1, 1,
               0, 0,
@@ -289,7 +289,7 @@ const bool standardSix4[standardSixNbPieces4 * standardSixSize] =
 //----------------------------------------------------------------------------------------            
 const uint8_t standardSixNbPieces5 = 6;
 
-const bool standardSix5[standardSixNbPieces5 * standardSixSize] = 
+const prog_uint8_t standardSix5[standardSixNbPieces5 * standardSixSize] PROGMEM = 
             { 0, 1,
               1, 1,
               1, 1,
@@ -316,12 +316,12 @@ const bool standardSix5[standardSixNbPieces5 * standardSixSize] =
             };      
 
 //----------------------------------------------------------------------------------------
-const bool * standardSix[6] = { (const bool *)standardSix0, 
-                                (const bool *)standardSix1, 
-                                (const bool *)standardSix2,
-                                (const bool *)standardSix3,
-                                (const bool *)standardSix4,
-                                (const bool *)standardSix5
+const uint8_t * standardSix[6] = { (const uint8_t *)standardSix0, 
+                                (const uint8_t *)standardSix1, 
+                                (const uint8_t *)standardSix2,
+                                (const uint8_t *)standardSix3,
+                                (const uint8_t *)standardSix4,
+                                (const uint8_t *)standardSix5
                                  };
                                    
 const uint8_t standardSixNbPieces[6] = { standardSixNbPieces0,
@@ -341,7 +341,7 @@ const unsigned int standardNinesSize  = 9;
 //----------------------------------------------------------------------------------------
 const uint8_t standardNinesNbPieces0 = 1;
 
-const bool standardNines0[standardNinesNbPieces0 * standardNinesSize] = 
+const prog_uint8_t standardNines0[standardNinesNbPieces0 * standardNinesSize] PROGMEM = 
             { 0, 0, 0,
               0, 0, 0,
               0, 0, 0  
@@ -350,7 +350,7 @@ const bool standardNines0[standardNinesNbPieces0 * standardNinesSize] =
 //----------------------------------------------------------------------------------------                        
 const uint8_t standardNinesNbPieces1 = 9;
 
-const bool standardNines1[standardNinesNbPieces1 * standardNinesSize] = 
+const prog_uint8_t standardNines1[standardNinesNbPieces1 * standardNinesSize] PROGMEM = 
             { 1, 0, 0,
               0, 0, 0,
               0, 0, 0,
@@ -391,7 +391,7 @@ const bool standardNines1[standardNinesNbPieces1 * standardNinesSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardNinesNbPieces2 = 9;
 
-const bool standardNines2[standardNinesNbPieces1 * standardNinesSize] = 
+const prog_uint8_t standardNines2[standardNinesNbPieces1 * standardNinesSize] PROGMEM = 
             { 1, 1, 0,
               0, 0, 0,
               0, 0, 0,
@@ -432,7 +432,7 @@ const bool standardNines2[standardNinesNbPieces1 * standardNinesSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardNinesNbPieces3 = 9;
 
-const bool standardNines3[standardNinesNbPieces3 * standardNinesSize] = 
+const prog_uint8_t standardNines3[standardNinesNbPieces3 * standardNinesSize] PROGMEM = 
             { 1, 1, 1,
               0, 0, 0,
               0, 0, 0,
@@ -473,7 +473,7 @@ const bool standardNines3[standardNinesNbPieces3 * standardNinesSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardNinesNbPieces4 = 9;
 
-bool standardNines4[standardNinesNbPieces4 * standardNinesSize] = 
+const prog_uint8_t standardNines4[standardNinesNbPieces4 * standardNinesSize] PROGMEM = 
             { 1, 1, 1,
               0, 0, 1,
               0, 0, 0,
@@ -514,7 +514,7 @@ bool standardNines4[standardNinesNbPieces4 * standardNinesSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardNinesNbPieces5 = 9;
 
-const bool standardNines5[standardNinesNbPieces5 * standardNinesSize] = 
+const prog_uint8_t standardNines5[standardNinesNbPieces5 * standardNinesSize] PROGMEM = 
             { 1, 1, 1,
               0, 1, 0,
               0, 1, 0,
@@ -555,7 +555,7 @@ const bool standardNines5[standardNinesNbPieces5 * standardNinesSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardNinesNbPieces6 = 7;
 
-const bool standardNines6[standardNinesNbPieces6 * standardNinesSize] = 
+const prog_uint8_t standardNines6[standardNinesNbPieces6 * standardNinesSize] PROGMEM = 
             { 1, 1, 1,
               1, 1, 1,
               0, 0, 0,
@@ -588,7 +588,7 @@ const bool standardNines6[standardNinesNbPieces6 * standardNinesSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardNinesNbPieces7 = 14;
 
-const bool standardNines7[standardNinesNbPieces7 * standardNinesSize] = 
+const prog_uint8_t standardNines7[standardNinesNbPieces7 * standardNinesSize] PROGMEM = 
             { 1, 1, 1,
               1, 1, 1,
               1, 0, 0,
@@ -649,7 +649,7 @@ const bool standardNines7[standardNinesNbPieces7 * standardNinesSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardNinesNbPieces8 = 7;
 
-const bool standardNines8[standardNinesNbPieces8 * standardNinesSize] = 
+const prog_uint8_t standardNines8[standardNinesNbPieces8 * standardNinesSize] PROGMEM = 
             { 1, 1, 1,
               1, 1, 1,
               1, 0, 1,
@@ -682,23 +682,23 @@ const bool standardNines8[standardNinesNbPieces8 * standardNinesSize] =
 //----------------------------------------------------------------------------------------
 const uint8_t standardNinesNbPieces9 = 1;
 
-const bool standardNines9[standardNinesNbPieces8 * standardNinesSize] = 
+const prog_uint8_t standardNines9[standardNinesNbPieces9 * standardNinesSize] PROGMEM = 
             { 1, 1, 1,
               1, 1, 1,
               1, 1, 1  
             };                                 
 
 //----------------------------------------------------------------------------------------
-const bool * standardNines[10] = { (const bool *)standardNines0, 
-                                   (const bool *)standardNines1, 
-                                   (const bool *)standardNines2, 
-                                   (const bool *)standardNines3, 
-                                   (const bool *)standardNines4, 
-                                   (const bool *)standardNines5, 
-                                   (const bool *)standardNines6,
-                                   (const bool *)standardNines7,
-                                   (const bool *)standardNines8,
-                                   (const bool *)standardNines9 
+const uint8_t * standardNines[10] = { (const uint8_t *)standardNines0, 
+                                   (const uint8_t *)standardNines1, 
+                                   (const uint8_t *)standardNines2, 
+                                   (const uint8_t *)standardNines3, 
+                                   (const uint8_t *)standardNines4, 
+                                   (const uint8_t *)standardNines5, 
+                                   (const uint8_t *)standardNines6,
+                                   (const uint8_t *)standardNines7,
+                                   (const uint8_t *)standardNines8,
+                                   (const uint8_t *)standardNines9 
                                  };
                                    
 const uint8_t standardNinesNbPieces[10] = { standardNinesNbPieces0,
@@ -855,13 +855,13 @@ void standardMode(uint8_t hourLeft,
 // pieces: array of variant ordered per digit
 // piecesSize: size of the pieces
 // h, s, l: HSL color used to display the piece
-void standardGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t pieceNumber, const bool ** pieces, uint8_t piecesSize, uint8_t h, uint8_t s, uint8_t l)
+void standardGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t pieceNumber, const uint8_t ** pieces, uint8_t piecesSize, uint8_t h, uint8_t s, uint8_t l)
 {
   for (uint8_t ledOffset=0; ledOffset < piecesSize; ledOffset++)
   {
-    const bool *led_active = pieces[value] + piecesSize*pieceNumber + ledOffset;
+    uint8_t led_active = pgm_read_byte_near(pieces[value] + piecesSize*pieceNumber + ledOffset);
     
-    if (*led_active)
+    if (led_active)
       ledsSetColor(ledStartNumber + ledOffset, h, s, l);
     else
       ledsSetColor(ledStartNumber + ledOffset, 0, 0, 0);

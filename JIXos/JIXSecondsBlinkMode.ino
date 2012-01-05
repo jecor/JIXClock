@@ -40,9 +40,9 @@ unsigned int secondsBlinkMode(uint8_t hourLeft,
 extern const unsigned int standardThreesSize;
 extern const unsigned int standardSixSize;
 extern const unsigned int standardNinesSize;
-extern const bool * standardThrees[];
-extern const bool * standardSix[];
-extern const bool * standardNines[];
+extern const uint8_t * standardThrees[];
+extern const uint8_t * standardSix[];
+extern const uint8_t * standardNines[];
 extern const uint8_t standardThreesNbPieces[];
 extern const uint8_t standardSixNbPieces[];
 extern const uint8_t standardNinesNbPieces[];
