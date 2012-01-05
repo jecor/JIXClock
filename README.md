@@ -9,6 +9,6 @@ LICENSE
 * Hardware and Docs under CC-BY-SA.
 * Software under GPL v3.
 
-Copyright 2010-2011 Jerome Cornet
+Copyright 2010-2011 Jerome Cornet.
 
 
