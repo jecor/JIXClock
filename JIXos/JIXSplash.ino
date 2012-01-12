@@ -32,7 +32,7 @@ void splashStartup();
 
 void splashStartup()
 {
-  Serial.println("Splash...");
+  Serial.println(F("Splash..."));
   uint8_t h = 0;
   uint8_t l = 64;
   
