@@ -122,7 +122,7 @@ void restoreSettings()
       (globalLuminosity > 128) ||
       ((globalLuminosity % 16) != 0))
   {
-    Serial.println("Invalid luminosity, resetting to 64");
+    Serial.println(F("Invalid luminosity, resetting to 64"));
     globalLuminosity = 64;
   }
   
@@ -211,7 +211,7 @@ unsigned int manageSetButtonsTask()
             
           globalCorrectionOverride = true;
             
-          Serial.print("New mode: ");
+          Serial.print(F("New mode: "));
           Serial.println(globalMode);
         }
       }
@@ -280,7 +280,7 @@ unsigned int manageSetButtonsTask()
         else
           globalLuminosity += 16;
           
-        Serial.print("New luminosity: ");
+        Serial.print(F("New luminosity: "));
         Serial.println(globalLuminosity);
         
         rtcSetMemory(LUMINOSITY_ADDRESS, globalLuminosity);
@@ -507,12 +507,30 @@ void kernel()
   }
 }
 
+extern unsigned int __bss_end;
+extern void *__brkval;
+
+int get_free_memory()
+{
+  int free_memory;
+
+  if((int)__brkval == 0)
+    free_memory = ((int)&free_memory) - ((int)&__bss_end);
+  else
+    free_memory = ((int)&free_memory) - ((int)__brkval);
+
+  return free_memory;
+}
+
 void loop()
 {
-  Serial.print("JIXos version ");
+  Serial.print(F("JIXos version "));
   Serial.print(globalVersionMajor);
   Serial.print(".");
   Serial.println(globalVersionMinor);
+  
+  Serial.print(F("Free memory: "));
+  Serial.println(get_free_memory());
   
   splashStartup();
   
