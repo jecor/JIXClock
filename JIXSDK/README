@@ -25,5 +25,5 @@ For now, buttons input is not supported, as well as RTC memory. You will need to
 
 LEDs display takes into account the luminosity, but the result is not very realistic (too dim).
  
-
+Only a subset of the Arduino functions is implemented for now (random, etc.). You can add new function's implementation by modifying the files in the src directory. AVRCompat.h should contain the prototype of the function (the file is included when compiling the Arduino files), and JIXMain.cpp contains the implementation. 
 
