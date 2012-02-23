@@ -1,0 +1,5 @@
+.DS_Store
+JIXsimulator
+.deps
+.objs
+*.class
