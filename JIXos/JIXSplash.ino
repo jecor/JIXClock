@@ -48,7 +48,7 @@ void splashStartup()
       ledsSetColor(led, h, 255, l);
       
       h += 20;
-      if (h > 255)
+      if (h >= 255)
         h = 0;
     }
     

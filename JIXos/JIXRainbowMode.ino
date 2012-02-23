@@ -170,10 +170,10 @@ void rainbowMode(uint8_t hourLeft,
     }
     else
     {
-      rainbowColorHourLeft++;    if (rainbowColorHourLeft >= 256) rainbowColorHourLeft = 0;
-      rainbowColorHourRight++;   if (rainbowColorHourRight >= 256) rainbowColorHourRight = 0;
-      rainbowColorMinuteLeft++;  if (rainbowColorMinuteLeft >= 256) rainbowColorMinuteLeft = 0;
-      rainbowColorMinuteRight++; if (rainbowColorMinuteRight >= 256) rainbowColorMinuteRight = 0;
+      rainbowColorHourLeft++;    if (rainbowColorHourLeft >= 255) rainbowColorHourLeft = 0;
+      rainbowColorHourRight++;   if (rainbowColorHourRight >= 255) rainbowColorHourRight = 0;
+      rainbowColorMinuteLeft++;  if (rainbowColorMinuteLeft >= 255) rainbowColorMinuteLeft = 0;
+      rainbowColorMinuteRight++; if (rainbowColorMinuteRight >= 255) rainbowColorMinuteRight = 0;
     } 
     
     rainbowCounter++;
