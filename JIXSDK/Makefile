@@ -17,7 +17,7 @@
 #
 
 #---------------------------------------------------------------------
-SRCSFILES    = JIXmain.cpp
+
 ARDUINOFILES = JIXos.ino               \
                JIXColorTestMode.ino    \
                JIXColorfulMode.ino     \
@@ -28,7 +28,9 @@ ARDUINOFILES = JIXos.ino               \
                JIXSplash.ino           \
                JIXStandardMode.ino     \
                JIXTorchMode.ino
-               
+
+SRCSFILES    = JIXmain.cpp
+
 #---------------------------------------------------------------------
 PROGRAM   = JIXsimulator
 #---------------------------------------------------------------------
