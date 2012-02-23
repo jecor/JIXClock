@@ -112,8 +112,8 @@ const prog_uint8_t standardThrees2[standardThreesNbPieces2 * standardThreesSize]
 const uint8_t * standardThrees[3] = { (const uint8_t *)standardThrees0, 
                                       (const uint8_t *)standardThrees1, 
                                       (const uint8_t *)standardThrees2
-                                 };
-                                   
+                                    };
+                                 
 const uint8_t standardThreesNbPieces[3] = { standardThreesNbPieces0,
                                             standardThreesNbPieces1,
                                             standardThreesNbPieces2
@@ -323,7 +323,7 @@ const uint8_t * standardSix[6] = { (const uint8_t *)standardSix0,
                                 (const uint8_t *)standardSix4,
                                 (const uint8_t *)standardSix5
                                  };
-                                   
+
 const uint8_t standardSixNbPieces[6] = { standardSixNbPieces0,
                                          standardSixNbPieces1,
                                          standardSixNbPieces2,
@@ -700,7 +700,7 @@ const uint8_t * standardNines[10] = { (const uint8_t *)standardNines0,
                                       (const uint8_t *)standardNines8,
                                       (const uint8_t *)standardNines9 
                                  };
-                                   
+
 const uint8_t standardNinesNbPieces[10] = { standardNinesNbPieces0,
                                             standardNinesNbPieces1,
                                             standardNinesNbPieces2,
@@ -797,7 +797,7 @@ void standardMode(uint8_t hourLeft,
     standardPieceNumberMinuteRight = random(standardNinesNbPieces[minuteRight]);
     
     standardColorHourLeft = random(33);
-    do { standardColorHourRight   = random(33); } while (abs(standardColorHourLeft - standardColorHourRight) < standardColorDifference);
+    do { standardColorHourRight   = random(33); } while (abs(standardColorHourLeft - standardColorHourRight) < standardColorDifference);
     do { standardColorMinuteLeft  = random(33); } while ((abs(standardColorHourLeft - standardColorMinuteLeft) < standardColorDifference) ||
                                                  (abs(standardColorHourRight - standardColorMinuteLeft) < standardColorDifference));
     do { standardColorMinuteRight = random(33); } while ((abs(standardColorHourLeft - standardColorMinuteRight) < standardColorDifference)  ||
