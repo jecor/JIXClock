@@ -113,10 +113,10 @@ public class ino_preprocess
       if (args.length > 0)
       {
          for (int j=0; j<args.length; j++)
-         {
+         {            
             try
             {
-               String text = new Scanner( new File(args[j]) ).useDelimiter("\\A").next();
+               String text = new Scanner(new File(args[j])).useDelimiter("\\A").next();
                               
                List<String> prototypes = prototypes(text);
                
@@ -129,6 +129,23 @@ public class ino_preprocess
                System.err.println("Unable to open input file!");
             }
          }
+         
+         for (int j=0; j<args.length; j++)
+         {
+            System.out.print("#line 1 \"" + args[j] + "\"\n");
+            
+            try
+            {
+               String text = new Scanner(new File(args[j])).useDelimiter("\\A").next();
+               
+               System.out.print(text);
+            }
+            catch (FileNotFoundException e)
+            {
+               System.err.println("Unable to open input file!");
+            }
+         }
+
       }
    }
    

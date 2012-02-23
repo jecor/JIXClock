@@ -51,7 +51,8 @@ INO_PREPROCESS        = ino_preprocess
 INO_PREPROCESS_CLASS  = utils/$(INO_PREPROCESS).class
 INO_PREPROCESS_SRC    = utils/$(INO_PREPROCESS).java
 
-INO_HEADER =  $(OBJSDIR)/ino_header.h
+INO_SRC = $(OBJSDIR)/ino_src.cpp
+INO_OBJ = $(OBJSDIR)/arduino.oino
 
 SRCS     = $(SRCSFILES:%=$(SRCSDIR)/%)
 ARDUINOS = $(ARDUINOFILES:%=$(ARDUINODIR)/%)
@@ -59,22 +60,20 @@ ARDUINOS = $(ARDUINOFILES:%=$(ARDUINODIR)/%)
 DEPS = $(SRCS:%.cpp=$(DEPSDIR)/%.d)
 OBJS = $(SRCS:%.cpp=$(OBJSDIR)/%.o)
 
-OBJARDUINO = $(OBJSDIR)/arduino.oino
-
 all: $(PROGRAM)
 
 .PHONY: clean
 clean: 
-	-rm -rf $(DEPSDIR) $(OBJSDIR) core $(PROGRAM) $(INO_PREPROCESS_CLASS) $(INO_HEADER)
+	-rm -rf $(DEPSDIR) $(OBJSDIR) core $(PROGRAM) $(INO_PREPROCESS_CLASS)
 
 $(INO_PREPROCESS_CLASS): $(INO_PREPROCESS_SRC)
 	javac $<
 
-$(INO_HEADER): $(ARDUINOS) $(INO_PREPROCESS_CLASS)
-	java -cp utils $(INO_PREPROCESS) $(ARDUINOS) > $(INO_HEADER)
+$(INO_SRC): $(ARDUINOS) $(INO_PREPROCESS_CLASS)
+	java -cp utils $(INO_PREPROCESS) $(ARDUINOS) > $@
 
-$(PROGRAM):	$(DEPS) $(OBJS) $(OBJARDUINO)
-	$(LD) $(LDFLAGS) $(OBJS) $(OBJARDUINO) $(LDLIBS) -o $(PROGRAM)
+$(PROGRAM):	$(DEPS) $(OBJS) $(INO_OBJ)
+	$(LD) $(LDFLAGS) $(OBJS) $(INO_OBJ) $(LDLIBS) -o $(PROGRAM)
                
 $(DEPSDIR)/%.d: %.cpp
 	@ echo Making dependencies for $<
@@ -89,11 +88,10 @@ $(OBJSDIR)/%.o: %.cpp $(DEPSDIR)/%.d Makefile
 	@ rmdir $@ 2>/dev/null || echo "$@ already exists" >/dev/null
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-$(OBJARDUINO): $(ARDUINOS) Makefile $(INO_HEADER)
+$(INO_OBJ): $(ARDUINOS) Makefile $(INO_SRC)
 	@ mkdir -p $@ 2>/dev/null || echo "$@ already exists" >/dev/null
 	@ rmdir $@ 2>/dev/null || echo "$@ already exists" >/dev/null
-	cat $(ARDUINOS) > $(OBJSDIR)/inosrc.cpp
-	$(CC) $(CPPFLAGS) $(CFLAGS) -include src/AVRcompat.h -include $(INO_HEADER) -c $(OBJSDIR)/inosrc.cpp -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -include src/AVRcompat.h -c $(INO_SRC) -o $@
 
 
 # Include dependency files
