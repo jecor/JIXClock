@@ -1,0 +1,29 @@
+JIXClock SDK
+-----------------------------------
+
+JIXSDK allows you to create and test "modes" for the JIXClock directly on your computer, without a physical JIXClock available. Basically, you compile your code with the Makefile, which produces a JIXsimulator executable. Launching JIXsimulator allows you to run your code and observe its behavior in its graphical window.
+
+Requirements
+------------------------------
+
+- GCC compiler (tested with GCC 4.2.1)
+- GNU Make
+- SDL (tested with 1.2.15). The sdl-config executable must be accessible with your PATH environment variable.
+- Java (tested with 1.6)
+- Java Compiler
+
+Creating/compiling a new mode
+------------------------------
+
+To create a new mode, open the Arduino application, then the "JIXos.ino" file (which will all related files ("tabs"). Create a new tab and write your code (see instructions in the JIXos README file).
+Then add the your new file (xxx.ino) in the Makefile of JIXSDK (ARDUINOFILES variable) and type make. The JIXsimulator executable is produced at the end of the build process.
+
+Limitations
+------------------------------
+
+For now, buttons input is not supported, as well as RTC memory. You will need to hack JIXos.ino to subsitute the first mode pointer with your own mode to execute it directly on startup.
+
+LEDs display takes into account the luminosity, but the result is not very realistic (too dim).
+ 
+
+
