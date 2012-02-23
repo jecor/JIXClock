@@ -42,3 +42,12 @@ void ledsSetColor(ledNumber, h, s, l);
 
 >> This function allows to set the H, S, L (Hue, Saturation, Lightness) color of the LEDs #ledNumber. ledNumber is between 1 and 27, corresponding to the number appearing on the pcb (ledNumber = 12 for D12). The l parameter must always be set to the luminosity value passed as parameter to the mode's entry point.
 
+Adding the mode to the main
+----------------------------
+
+For the mode to be executed and available when cycling using the "Mode" button, you must modify the JIXos.ino file:
+ - Increment the globalNbModes constant
+ - Add the entry point function of your mode to the globalModeFunctions function pointer array (at the end).
+
+Note: the softare will not support more than 27 modes for now.
+
