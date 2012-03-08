@@ -29,7 +29,11 @@ ARDUINOFILES = JIXos.ino               \
                JIXStandardMode.ino     \
                JIXTorchMode.ino
 
-SRCSFILES    = JIXmain.cpp
+SRCSFILES    = ArduinoCompat.cpp       \
+               JIXrtc.cpp              \
+               JIXtimer.cpp            \
+               JIXgraphics.cpp         \
+               JIXmain.cpp
 
 #---------------------------------------------------------------------
 PROGRAM   = JIXsimulator
@@ -90,10 +94,10 @@ $(OBJSDIR)/%.o: %.cpp $(DEPSDIR)/%.d Makefile
 	@ rmdir $@ 2>/dev/null || echo "$@ already exists" >/dev/null
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-$(INO_OBJ): $(ARDUINOS) Makefile $(INO_SRC)
+$(INO_OBJ): $(ARDUINOS) Makefile $(INO_SRC) src/ArduinoCompat.h src/JIXhal.h 
 	@ mkdir -p $@ 2>/dev/null || echo "$@ already exists" >/dev/null
 	@ rmdir $@ 2>/dev/null || echo "$@ already exists" >/dev/null
-	$(CC) $(CPPFLAGS) $(CFLAGS) -include src/AVRcompat.h -c $(INO_SRC) -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -include src/ArduinoCompat.h -include src/JIXhal.h -c $(INO_SRC) -o $@
 
 
 # Include dependency files
