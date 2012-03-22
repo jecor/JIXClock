@@ -70,9 +70,9 @@ void ledsSetColor(uint8_t ledNumber, uint8_t h, uint8_t s, uint8_t l)
     g = g * (ledsGreenCorrection[ledNumber - 1] / 100.0);
     b = b * (ledsBlueCorrection[ledNumber - 1] / 100.0);*/
    
-   redLed[ledNumber] = r;
-   greenLed[ledNumber] = g;
-   blueLed[ledNumber] = b;
+   redLed[ledNumber-1] = r;
+   greenLed[ledNumber-1] = g;
+   blueLed[ledNumber-1] = b;
 }
 
 // Set the RGB color of the LED #ledNumber
@@ -90,9 +90,9 @@ void ledsSetRGBColor(uint8_t ledNumber, uint8_t r, uint8_t g, uint8_t b)
       return;
    }
    
-   redLed[ledNumber] = mr;
-   greenLed[ledNumber] = mg;
-   blueLed[ledNumber] = mb;
+   redLed[ledNumber-1] = mr;
+   greenLed[ledNumber-1] = mg;
+   blueLed[ledNumber-1] = mb;
 }
 
 //----------------------------------------------------------------------------------------
