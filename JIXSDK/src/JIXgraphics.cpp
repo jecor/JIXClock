@@ -191,7 +191,7 @@ void drawLEDs(SDL_Surface * screen)
       {         
          int index = modeDisplayScanOrder[i];
          
-         color = SDL_MapRGB(screen->format, redLed[index], greenLed[index], blueLed[index]);
+         color = SDL_MapRGB(screen->format, redLed[index-1], greenLed[index-1], blueLed[index-1]);
          
          SDL_FillRect(screen, &rect, color);
          
