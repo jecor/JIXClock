@@ -17,6 +17,7 @@
  */
 
 #include <inttypes.h>
+#include <stdlib.h>
 
 //-----------------------------------------------------------------
 // LEDs functions
