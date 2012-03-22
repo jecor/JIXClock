@@ -80,7 +80,7 @@ $(INO_SRC): $(ARDUINOS) $(INO_PREPROCESS_CLASS)
 	java -cp utils $(INO_PREPROCESS) $(ARDUINOS) > $@
 
 $(PROGRAM):	$(DEPS) $(OBJS) $(INO_OBJ)
-	$(LD) $(LDFLAGS) $(OBJS) $(INO_OBJ) $(LDLIBS) -o $(PROGRAM)
+	$(LD) $(OBJS) $(INO_OBJ) $(LDFLAGS) $(LDLIBS) -o $(PROGRAM)
                
 $(DEPSDIR)/%.d: %.cpp
 	@ echo Making dependencies for $<
