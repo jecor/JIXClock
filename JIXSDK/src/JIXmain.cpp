@@ -21,6 +21,7 @@
 #include <string.h>
 #include <time.h>
 #include <inttypes.h>
+#include <sstream>
 
 #include "SDL.h"
 #include "ArduinoCompat.h"
@@ -34,7 +35,42 @@ void loop();
 
 int main(int argc, char *argv[])
 {
-   int          width, height, bpp;
+   unsigned int width, height, bpp;
+   
+   width = 640;
+   
+   for (int i=1; i<argc; i++)
+   {
+      std::string currentArg(argv[i]);
+   
+      if ((currentArg == std::string("-h")) ||
+          (currentArg == std::string("--help")))
+      {
+         std::cout << "usage: " << argv[0] << " [ -options ... ]" << std::endl;
+         std::cout << "where options include:" << std::endl << std::endl;
+         std::cout << "   -h, --help          display this help message" << std::endl;
+         std::cout << "   -w, --width value   set the width of the window (corresponding height is determined automatically)" << std::endl;
+         std::cout << std::endl;
+         
+         return 0;
+      }
+      else if ((currentArg == std::string("-w")) ||
+               (currentArg == std::string("--width")))
+      {
+         if ((i+1) < argc)
+         {
+            std::stringstream ss(argv[i+1]);
+
+            ss >> width;            
+         }
+         else
+         {
+            std::cerr << "You must provide a value with " << currentArg << " option!" << std::endl;
+            return 1;
+         }
+      }
+   }
+   
    Uint32       videoFlags;
          
    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
@@ -43,7 +79,6 @@ int main(int argc, char *argv[])
       exit(1);
    }
    
-   width  = 640;
    height = width / CLOCK_ASPECT_RATIO;
    bpp    = 32;
    videoFlags = SDL_SWSURFACE;
