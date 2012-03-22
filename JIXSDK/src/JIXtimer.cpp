@@ -43,7 +43,7 @@ void delay(unsigned int value)
    {
       switch (event.type)
       {
-         case SDL_KEYDOWN:
+         //case SDL_KEYDOWN:
          case SDL_QUIT:
             SDL_Quit();
             exit(0);

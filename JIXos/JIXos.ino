@@ -52,9 +52,6 @@ unsigned int (*globalModeFunctions[globalNbModes]) (uint8_t hourLeft,
   &colorTestMode,
 };
 
-const unsigned int SETH_PIN = 4;
-const unsigned int SETM_PIN = 12;
-
 const uint8_t LUMINOSITY_ADDRESS = 0;
 const uint8_t MODE_ADDRESS       = 1;
 
@@ -106,8 +103,7 @@ void setup()
   
   ledsInit();
   
-  pinMode(SETH_PIN, INPUT);
-  pinMode(SETM_PIN, INPUT);
+  buttonsInit();
   
   Serial.begin(115200);
   
@@ -135,8 +131,8 @@ void restoreSettings()
 unsigned int manageSetButtonsTask()
 {
   //Serial.println("##manageSetButtonsTask");
-  bool setHPressed = (digitalRead(SETH_PIN) == 0);
-  bool setMPressed = (digitalRead(SETM_PIN) == 0);
+  bool setHPressed = buttonsGetModeState(); // (digitalRead(SETH_PIN) == 0);
+  bool setMPressed = buttonsGetIncrementState(); //(digitalRead(SETM_PIN) == 0);
   
   /*Serial.print("SetH: ");
   Serial.print(setHPressed);

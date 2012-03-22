@@ -101,11 +101,6 @@ uint8_t rtcGetMemory(unsigned int address)
    return 0; 
 }
 
-unsigned int digitalRead(unsigned int pinNumber)
-{ 
-   return 1; 
-}
-
 void rtcSetMemory(unsigned int address, uint8_t data)
 {
 }

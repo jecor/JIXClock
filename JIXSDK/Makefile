@@ -30,6 +30,7 @@ ARDUINOFILES = JIXos.ino               \
                JIXTorchMode.ino
 
 SRCSFILES    = ArduinoCompat.cpp       \
+               JIXbuttons.cpp          \
                JIXrtc.cpp              \
                JIXtimer.cpp            \
                JIXgraphics.cpp         \

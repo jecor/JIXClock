@@ -71,7 +71,11 @@ void rtcDebugTime(uint8_t hour, uint8_t minute, uint8_t second);
 int get_free_memory();
 
 //-----------------------------------------------------------------
-// Pin
+// Buttons
 //-----------------------------------------------------------------
-unsigned int digitalRead(unsigned int pinNumber);
+void buttonsInit();
+
+bool buttonsGetModeState();
+
+bool buttonsGetIncrementState();
 

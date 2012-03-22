@@ -18,10 +18,19 @@ Creating/compiling a new mode
 To create a new mode, open the Arduino application, then the "JIXos.ino" file (which will all related files ("tabs"). Create a new tab and write your code (see instructions in the JIXos README file).
 Then add the your new file (xxx.ino) in the Makefile of JIXSDK (ARDUINOFILES variable) and type make. The JIXsimulator executable is produced at the end of the build process.
 
+Using the buttons
+------------------------------
+
+The buttons are emulated through the keyboard. 
+Key "m" is for the "mode" button,
+Key "i" is for the "increment" button.
+
 Limitations
 ------------------------------
 
-For now, buttons input is not supported, as well as RTC memory. You will need to hack JIXos.ino to subsitute the first mode pointer with your own mode to execute it directly on startup.
+Setting the hour manually with the buttons is not very well supported (it is possible to cycle through the settings, but the increment button will have no effect for now).
+
+The RTC memory is not supported (luminosity is not remembered from one run to the other).
 
 LEDs display takes into account the luminosity, but the result is not very realistic (too dim).
  
