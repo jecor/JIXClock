@@ -19,6 +19,7 @@
 #include <iostream>
 #include "SDL.h"
 #include "JIXhal.h"
+#include "JIXrtc.h"
 
 SDL_Event user_event;
 
@@ -45,6 +46,7 @@ void delay(unsigned int value)
       {
          //case SDL_KEYDOWN:
          case SDL_QUIT:
+            rtcSaveMemory(memoryFileName);
             SDL_Quit();
             exit(0);
             break;

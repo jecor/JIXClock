@@ -21,9 +21,15 @@
 #include <string.h>
 #include <time.h>
 #include <inttypes.h>
+#include <fstream>
+#include <sstream>
 
 #include "ArduinoCompat.h"
 #include "JIXhal.h"
+
+const unsigned int rtcMemorySize  = 31;
+
+uint8_t rtcMemory[rtcMemorySize];
 
 // Initialize the RTC
 void rtcInit()
@@ -97,12 +103,19 @@ bool rtcCheckTime(uint8_t hour, uint8_t minute, uint8_t second)
 }
 
 uint8_t rtcGetMemory(unsigned int address)
-{ 
+{
+   if (address < rtcMemorySize)
+   {
+      return rtcMemory[address];
+   }
+   
    return 0; 
 }
 
 void rtcSetMemory(unsigned int address, uint8_t data)
 {
+   if (address < rtcMemorySize)
+      rtcMemory[address] = data;
 }
 
 void rtcDebugBCD(uint8_t value)
@@ -119,5 +132,48 @@ void rtcDebugTime(uint8_t hour, uint8_t minute, uint8_t second)
    Serial.print(":");
    rtcDebugBCD(second);
    Serial.println("");
+}
+
+void rtcLoadMemory(const std::string & filename)
+{   
+   memset(rtcMemory, 0, rtcMemorySize);
+   
+   std::ifstream memoryFile(filename.c_str());
+   
+   if (memoryFile)
+   {
+      std::string lineStr;
+      
+      if (std::getline(memoryFile, lineStr))
+      {         
+         std::stringstream ss;
+         
+         ss << lineStr;
+         
+         for (unsigned int i=0; i<rtcMemorySize; i++)
+         {
+            unsigned int val;
+            
+            ss >> val;
+            
+            rtcMemory[i] = val;
+         }
+      }
+   }
+}
+
+void rtcSaveMemory(const std::string & filename)
+{   
+   std::ofstream memoryFile(filename.c_str());
+   
+   if (memoryFile)
+   {
+      for (unsigned int i=0; i<rtcMemorySize; i++)
+      {
+         memoryFile << (unsigned int)rtcMemory[i] << " ";
+      }
+      
+      memoryFile << std::endl;
+   }
 }
 

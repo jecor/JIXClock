@@ -27,6 +27,7 @@
 #include "ArduinoCompat.h"
 #include "JIXhal.h"
 #include "JIXgraphics.h"
+#include "JIXrtc.h"
 
 extern SDL_Surface  *main_screen;
 
@@ -91,6 +92,8 @@ int main(int argc, char *argv[])
    }
    
    SDL_WM_SetCaption("JIXsimulator", "");
+   
+   rtcLoadMemory(memoryFileName);
    
    drawBackground(main_screen);
    drawLEDs(main_screen);
