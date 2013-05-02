@@ -27,7 +27,8 @@ ARDUINOFILES = JIXos.ino               \
                JIXSecondsMode.ino      \
                JIXSplash.ino           \
                JIXStandardMode.ino     \
-               JIXTorchMode.ino
+               JIXTorchMode.ino        \
+               JIXDemoMode.ino
 
 SRCSFILES    = ArduinoCompat.cpp       \
                JIXbuttons.cpp          \

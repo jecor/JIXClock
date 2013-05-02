@@ -26,7 +26,7 @@
 const unsigned int globalVersionMajor = 1;
 const unsigned int globalVersionMinor = 0;
 
-const unsigned int globalNbModes = 13;
+const unsigned int globalNbModes = 14;
 
 unsigned int (*globalModeFunctions[globalNbModes]) (uint8_t hourLeft, 
                                                     uint8_t hourRight, 
@@ -50,6 +50,7 @@ unsigned int (*globalModeFunctions[globalNbModes]) (uint8_t hourLeft,
   &secondsBlinkMode,
   &torchMode,
   &colorTestMode,
+  &demoMode
 };
 
 const uint8_t LUMINOSITY_ADDRESS = 0;
