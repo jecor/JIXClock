@@ -64,15 +64,13 @@ unsigned int demoMode(uint8_t hourLeft,
   {
     demoTotalTime += taskDelay;
     
-    Serial.print("demoTotalTime: ");
-    Serial.println(demoTotalTime);
+    /*Serial.print("demoTotalTime: ");
+    Serial.println(demoTotalTime);*/
     
     if (demoTotalTime >= 60000)
     {
       demoTotalTime = 0;
-      demoCurrentMode++;
-      if (demoCurrentMode > 5)
-        demoCurrentMode = 0;
+      demoCurrentMode = random(9);
         
       Serial.print("Demo new mode: ");
       Serial.println(demoCurrentMode);
