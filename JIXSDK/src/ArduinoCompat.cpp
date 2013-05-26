@@ -35,6 +35,11 @@ uint8_t pgm_read_byte_near(const uint8_t *pointer)
    return *pointer; 
 }
 
+uint16_t pgm_read_word_near(const uint16_t *pointer) 
+{ 
+   return *pointer; 
+}
+
 const char * F(const char * in_string)
 { 
    return in_string; 

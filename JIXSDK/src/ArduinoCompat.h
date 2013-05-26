@@ -34,6 +34,7 @@
 // Types
 //-----------------------------------------------------------------
 typedef uint8_t prog_uint8_t;
+typedef uint16_t prog_uint16_t;
 
 //-----------------------------------------------------------------
 // Arduino functions
@@ -43,6 +44,8 @@ unsigned int abs(unsigned int value);
 unsigned int random(unsigned int max);
 
 uint8_t pgm_read_byte_near(const uint8_t *pointer);
+
+uint16_t pgm_read_word_near(const uint16_t *pointer);
 
 void pinMode(unsigned int, unsigned int);
 
