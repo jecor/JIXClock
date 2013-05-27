@@ -49,8 +49,9 @@ int main(int argc, char *argv[])
       {
          std::cout << "usage: " << argv[0] << " [ -options ... ]" << std::endl;
          std::cout << "where options include:" << std::endl << std::endl;
-         std::cout << "   -h, --help          display this help message" << std::endl;
-         std::cout << "   -w, --width value   set the width of the window (corresponding height is determined automatically)" << std::endl;
+         std::cout << "   -h, --help              display this help message" << std::endl;
+         std::cout << "   -w, --width value       set the width of the window (corresponding height is determined automatically)" << std::endl;
+         std::cout << "   -at hour minute seconds set the RTC to an artifical time" << std::endl;
          std::cout << std::endl;
          
          return 0;
@@ -67,6 +68,33 @@ int main(int argc, char *argv[])
          else
          {
             std::cerr << "You must provide a value with " << currentArg << " option!" << std::endl;
+            return 1;
+         }
+      }
+      else if (currentArg == std::string("-at"))
+      {
+         if ((i+3) < argc)
+         {
+            unsigned int h, m, s;
+            
+            std::stringstream ss(argv[i+1]);
+            
+            ss >> h;
+            
+            std::stringstream ss2(argv[i+2]);
+            
+            ss2 >> m;
+            
+            std::stringstream ss3(argv[i+3]);
+            
+            ss3 >> s;
+            
+            std::cout << "Starting at artificial time " << h << ":" << m << ":" << s << std::endl;
+            rtcSetArtificialTime(h, m, s);
+         }
+         else
+         {
+            std::cerr << "You must provide three values with " << currentArg << " option!" << std::endl;
             return 1;
          }
       }

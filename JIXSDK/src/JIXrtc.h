@@ -24,6 +24,8 @@ void rtcLoadMemory(const std::string & filename);
 
 void rtcSaveMemory(const std::string & filename);
 
+void rtcSetArtificialTime(uint8_t hour, uint8_t minute, uint8_t second);
+
 //-----------------------------------------------------------------
 // Constants
 //-----------------------------------------------------------------

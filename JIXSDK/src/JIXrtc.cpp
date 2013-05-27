@@ -31,6 +31,13 @@ const unsigned int rtcMemorySize  = 31;
 
 uint8_t rtcMemory[rtcMemorySize];
 
+bool rtcArtificialTimeMode = false;
+
+int rtcArtificialHour   = 0;
+int rtcArtificialMinute = 0;
+int rtcArtificialSecond = 0;
+int rtcLastSecond = 0;
+
 // Initialize the RTC
 void rtcInit()
 {
@@ -65,9 +72,40 @@ void rtcGetTime(uint8_t & hour, uint8_t & minute, uint8_t & second)
    time(&rawtime);
    timeinfo = localtime(&rawtime);
    
-   hour = ((timeinfo->tm_hour / 10) << 4) + ((timeinfo->tm_hour) % 10);
-   minute = ((timeinfo->tm_min / 10) << 4) + ((timeinfo->tm_min) % 10);
-   second = ((timeinfo->tm_sec / 10) << 4) + ((timeinfo->tm_sec) % 10);
+   if (rtcArtificialTimeMode)
+   {
+      if (rtcLastSecond != timeinfo->tm_sec)
+      {
+         // one second elapsed
+         rtcLastSecond = timeinfo->tm_sec;
+         
+         rtcArtificialSecond++;
+         if (rtcArtificialSecond == 60)
+         {
+            rtcArtificialSecond = 0;
+            rtcArtificialMinute++;
+         }
+         if (rtcArtificialMinute == 60)
+         {
+            rtcArtificialMinute = 0;
+            rtcArtificialHour++;
+         }
+         if (rtcArtificialHour == 24)
+         {
+            rtcArtificialHour = 0;
+         }
+      }  
+         
+      hour = ((rtcArtificialHour / 10) << 4) + ((rtcArtificialHour) % 10);
+      minute = ((rtcArtificialMinute / 10) << 4) + ((rtcArtificialMinute) % 10);
+      second = ((rtcArtificialSecond / 10) << 4) + ((rtcArtificialSecond) % 10);
+   }
+   else
+   {
+      hour = ((timeinfo->tm_hour / 10) << 4) + ((timeinfo->tm_hour) % 10);
+      minute = ((timeinfo->tm_min / 10) << 4) + ((timeinfo->tm_min) % 10);
+      second = ((timeinfo->tm_sec / 10) << 4) + ((timeinfo->tm_sec) % 10);
+   }
    
    /*hour = 0x13;
     minute = 0x50;
@@ -177,3 +215,10 @@ void rtcSaveMemory(const std::string & filename)
    }
 }
 
+void rtcSetArtificialTime(uint8_t hour, uint8_t minute, uint8_t second)
+{
+   rtcArtificialTimeMode = true;
+   rtcArtificialHour = hour;
+   rtcArtificialMinute = minute;
+   rtcArtificialSecond = second;
+}
