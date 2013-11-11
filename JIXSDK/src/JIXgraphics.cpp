@@ -18,7 +18,7 @@
 
 #include <stdio.h>
 #include "SDL.h"
-#include "JIXHal.h"
+#include "JIXhal.h"
 #include "JIXgraphics.h"
 
 //-----------------------------------------------------------------
