@@ -18,37 +18,12 @@
 //----------------------------------------------------------------------------------------
 // Colorful Mode with Tetris-like display
 //----------------------------------------------------------------------------------------
+#include "JIXLEDS.h"
+#include "JIXColorfulMode.h"
 
 //----------------------------------------------------------------------------------------
-// Public API
+// Internal functions
 //----------------------------------------------------------------------------------------
-
-unsigned int colorfulModeFast(uint8_t hourLeft, 
-                              uint8_t hourRight, 
-                              uint8_t minuteLeft, 
-                              uint8_t minuteRight, 
-                              uint8_t secondLeft, 
-                              uint8_t secondRight, 
-                              uint8_t luminosity,
-                              bool    hold);
-
-unsigned int colorfulModeMedium(uint8_t hourLeft, 
-                                uint8_t hourRight, 
-                                uint8_t minuteLeft, 
-                                uint8_t minuteRight, 
-                                uint8_t secondLeft, 
-                                uint8_t secondRight, 
-                                uint8_t luminosity,
-                                bool    hold);
-                           
-unsigned int colorfulModeSlow(uint8_t hourLeft, 
-                              uint8_t hourRight, 
-                              uint8_t minuteLeft, 
-                              uint8_t minuteRight, 
-                              uint8_t secondLeft, 
-                              uint8_t secondRight, 
-                              uint8_t luminosity,
-                              bool    hold);
  
 void colorfulMode(uint8_t hourLeft, 
                   uint8_t hourRight, 
@@ -59,7 +34,14 @@ void colorfulMode(uint8_t hourLeft,
                   uint8_t luminosity,
                   bool    hold);
 
-                           
+void colorfulGenericDisplay(uint8_t ledStartNumber, 
+                            uint8_t value, 
+                            uint8_t pieceNumber, 
+                            const uint8_t ** pieces, 
+                            uint8_t piecesSize, 
+                            uint8_t luminosity, 
+                            uint8_t color);
+
 //----------------------------------------------------------------------------------------
 // Externs
 //----------------------------------------------------------------------------------------

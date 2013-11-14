@@ -18,6 +18,24 @@
 //----------------------------------------------------------------------------------------
 // Main
 //----------------------------------------------------------------------------------------
+#include <Tlc5940.h>
+
+#include "JIXButtons.h"
+#include "JIXLEDS.h"
+#include "JIXRTC.h"
+
+#include "JIXSplash.h"
+#include "JIXUtilities.h"
+#include "JIXModeDisplay.h"
+
+#include "JIXStandardMode.h"
+#include "JIXColorfulMode.h"
+#include "JIXRainbowMode.h"
+#include "JIXSecondsMode.h"
+#include "JIXSecondsBlinkMode.h"
+#include "JIXTorchMode.h"
+#include "JIXColorTestMode.h"
+#include "JIXDemoMode.h"
 
 //----------------------------------------------------------------------------------------
 // Constants

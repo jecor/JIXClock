@@ -16,48 +16,26 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //----------------------------------------------------------------------------------------
-// Display of current mode (used when changing mode)
+// Color Test Mode: cycle through R, G, B
 //----------------------------------------------------------------------------------------
+#ifndef JIX_COLORTESTMODE_H
+#define JIX_COLORTESTMODE_H
+
+#include <Arduino.h>
 
 //----------------------------------------------------------------------------------------
 // Public API
 //----------------------------------------------------------------------------------------
 
-void modeDisplay(uint8_t mode);
+unsigned int colorTestMode(uint8_t hourLeft, 
+                           uint8_t hourRight, 
+                           uint8_t minuteLeft, 
+                           uint8_t minuteRight,
+                           uint8_t secondLeft, 
+                           uint8_t secondRight, 
+                           uint8_t luminosity,
+                           bool    hold);
 
-//----------------------------------------------------------------------------------------
-// Constants
-//----------------------------------------------------------------------------------------
 
-const uint8_t modeDisplayScanOrder[27] = { 25, 16, 17, 18, 10, 11, 1, 2, 3,
-                                           26, 19, 20, 21, 12, 13, 4, 5, 6,
-                                           27, 22, 23, 24, 14, 15, 7, 8, 9 };
-
-
-//----------------------------------------------------------------------------------------
-// Public API Implementation
-//----------------------------------------------------------------------------------------
-
-void modeDisplay(uint8_t mode)
-{
-  uint8_t h = 0;
-  uint8_t hIncrement = 255/globalNbModes;
-  
-  ledsBegin();
-  
-  for (uint8_t number = 0; number < 27; number++)
-  {
-    if (number <= mode)
-    {
-      ledsSetColor(modeDisplayScanOrder[number], h, 255, globalLuminosity);
-      h += hIncrement;
-    }
-    else
-    {
-      ledsSetColor(modeDisplayScanOrder[number], h, 255, 0);
-    }
-  }
-  
-  ledsEnd();
-}
+#endif
 

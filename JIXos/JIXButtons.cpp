@@ -16,44 +16,35 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //----------------------------------------------------------------------------------------
-// Torch mode: light up every led in white
+// Buttons management
 //----------------------------------------------------------------------------------------
+#include "JIXButtons.h"
 
 //----------------------------------------------------------------------------------------
-// Public API
+// Constants
 //----------------------------------------------------------------------------------------
 
-unsigned int torchMode(uint8_t hourLeft, 
-                       uint8_t hourRight, 
-                       uint8_t minuteLeft, 
-                       uint8_t minuteRight,
-                       uint8_t secondLeft, 
-                       uint8_t secondRight, 
-                       uint8_t luminosity,
-                       bool    hold);
+const unsigned int SETH_PIN = 4;
+const unsigned int SETM_PIN = 12;
 
 //----------------------------------------------------------------------------------------
-// Public API Implementation
+// Implementation
 //----------------------------------------------------------------------------------------
 
-unsigned int torchMode(uint8_t hourLeft, 
-                       uint8_t hourRight, 
-                       uint8_t minuteLeft, 
-                       uint8_t minuteRight, 
-                       uint8_t secondLeft, 
-                       uint8_t secondRight, 
-                       uint8_t luminosity,
-                       bool    hold)
+void buttonsInit()
 {
-  ledsBegin();
-  
-  for (uint8_t ledNumber = 1; ledNumber <= 27; ledNumber++)
-  {
-    ledsSetRGBColor(ledNumber, luminosity, luminosity, luminosity);
-  }
-  
-  ledsEnd();
-  
-  return 1000;
+  pinMode(SETH_PIN, INPUT);
+  pinMode(SETM_PIN, INPUT);
 }
+
+bool buttonsGetModeState()
+{
+   return (digitalRead(SETH_PIN) == 0);
+}
+
+bool buttonsGetIncrementState()
+{
+  return (digitalRead(SETM_PIN) == 0);
+}
+
 

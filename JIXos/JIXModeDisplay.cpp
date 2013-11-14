@@ -16,61 +16,46 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //----------------------------------------------------------------------------------------
-// Color Test Mode: cycle through R, G, B
+// Display of current mode (used when changing mode)
 //----------------------------------------------------------------------------------------
+#include "JIXLEDS.h"
+#include "JIXModeDisplay.h"
 
 //----------------------------------------------------------------------------------------
-// Public API
+// Constants
 //----------------------------------------------------------------------------------------
+const unsigned int globalNbModes = 14;
+extern unsigned int globalLuminosity;
 
-unsigned int colorTestMode(uint8_t hourLeft, 
-                           uint8_t hourRight, 
-                           uint8_t minuteLeft, 
-                           uint8_t minuteRight,
-                           uint8_t secondLeft, 
-                           uint8_t secondRight, 
-                           uint8_t luminosity,
-                           bool    hold);
+const uint8_t modeDisplayScanOrder[27] = { 25, 16, 17, 18, 10, 11, 1, 2, 3,
+                                           26, 19, 20, 21, 12, 13, 4, 5, 6,
+                                           27, 22, 23, 24, 14, 15, 7, 8, 9 };
 
-//----------------------------------------------------------------------------------------
-// Variables
-//----------------------------------------------------------------------------------------
-uint8_t colorTestModeToggle = 0;
 
 //----------------------------------------------------------------------------------------
 // Public API Implementation
 //----------------------------------------------------------------------------------------
 
-unsigned int colorTestMode(uint8_t hourLeft, 
-                           uint8_t hourRight, 
-                           uint8_t minuteLeft, 
-                           uint8_t minuteRight, 
-                           uint8_t secondLeft, 
-                           uint8_t secondRight, 
-                           uint8_t luminosity,
-                           bool    hold)
+void modeDisplay(uint8_t mode)
 {
+  uint8_t h = 0;
+  uint8_t hIncrement = 255/globalNbModes;
+  
   ledsBegin();
   
-  for (uint8_t ledNumber = 1; ledNumber <= 27; ledNumber++)
+  for (uint8_t number = 0; number < 27; number++)
   {
-    if (colorTestModeToggle < 3)
-      ledsSetRGBColor(ledNumber, 255, 0, 0);
-    else if (colorTestModeToggle < 6)
-      ledsSetRGBColor(ledNumber, 0, 255, 0);
-    else if (colorTestModeToggle < 9)
-      ledsSetRGBColor(ledNumber, 0, 0, 255);
+    if (number <= mode)
+    {
+      ledsSetColor(modeDisplayScanOrder[number], h, 255, globalLuminosity);
+      h += hIncrement;
+    }
+    else
+    {
+      ledsSetColor(modeDisplayScanOrder[number], h, 255, 0);
+    }
   }
   
   ledsEnd();
-  
-  if (!hold)
-  {
-    colorTestModeToggle++;
-    if (colorTestModeToggle >= 9)
-      colorTestModeToggle = 0;
-  }
-  
-  return 1000;
 }
 

@@ -18,45 +18,31 @@
 //----------------------------------------------------------------------------------------
 // Real Time Clock Management
 //----------------------------------------------------------------------------------------
+#include "JIXRTC.h"
 
 //----------------------------------------------------------------------------------------
-// Public API
+// Private functions
 //----------------------------------------------------------------------------------------
 
-// Initialize the RTC
-void rtcInit();
+// Write one byte of data at address
+void rtcWriteByte(uint8_t address, uint8_t data);
 
-// Set the time of RTC
-void rtcSetTime(uint8_t hour, uint8_t minute, uint8_t second);
+// Read one byte of data at address and return the result
+uint8_t rtcReadByte(uint8_t address);
 
-// Set the date of RTC
-void rtcSetDate(uint8_t day, uint8_t date, uint8_t month, uint8_t year);
+// Write one bit of data on RTC three-wire bus
+void rtcWriteBit(unsigned int bit_value);
 
-// Start the RTC
-void rtcStart();
+// Write the last bit of data on RTC three-wire bus
+void rtcWriteBitLast(unsigned int bit_value);
 
-// Halt the RTC
-void rtcHalt();
+// Read one bit of data on RTC three-wire bus
+unsigned int rtcReadBit();
 
-// Get the time of RTC
-void rtcGetTime(uint8_t & hour, uint8_t & minute, uint8_t & second);
-
-// Check the validity of the time passed as arguments, return true if valid
-bool rtcCheckTime(uint8_t hour, uint8_t minute, uint8_t second);
-
-// Get user data stored in RTC Memory ; index is between 0 and 30
-uint8_t rtcGetMemory(uint8_t index);
-
-// Store user data in RTC Memory ; index is between 0 and 30
-void rtcSetMemory(uint8_t index, uint8_t data);
-
-//----------------------------------------------------------------------------------------
-// Utilities
-//----------------------------------------------------------------------------------------
+// Read the last bit of data on RTC three-wire bus
+unsigned int rtcReadBitLast();
 
 void rtcDebugBCD(uint8_t value);
-void rtcDebugTime();
-void rtcDebugTime(uint8_t hour, uint8_t minute, uint8_t second);
 
 //----------------------------------------------------------------------------------------
 // Constants
@@ -77,7 +63,7 @@ void rtcInit()
   digitalWrite(RTC_CE_PIN, 0);
   
   pinMode(RTC_SCLK_PIN, OUTPUT);
-  digitalWrite(SCLK_PIN, 0);
+  digitalWrite(RTC_SCLK_PIN, 0);
   
   pinMode(RTC_IO_PIN, INPUT);
   digitalWrite(RTC_IO_PIN, 0);

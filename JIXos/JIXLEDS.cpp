@@ -18,31 +18,15 @@
 //----------------------------------------------------------------------------------------
 // RGB LEDs Management
 //----------------------------------------------------------------------------------------
-
-#include "Tlc5940.h"
-
-#if defined(ARDUINO) && ARDUINO >= 100
-#include "Arduino.h"
-#else
-#include "WProgram.h"
-#endif
-
+#include <Tlc5940.h>
+#include "JIXLEDS.h"
 
 //----------------------------------------------------------------------------------------
-// Public API
+// Private functions
 //----------------------------------------------------------------------------------------
 
-// Initialize LEDS
-void ledsInit();  
-
-// Call before updating the LEDs
-void ledsBegin();
-
-// Call after updating the LEDs
-void ledsEnd();
-
-// Set the HSL color of the LED #ledNumber. ledNumber is in [1..27]
-void ledsSetColor(uint8_t ledNumber, uint8_t h, uint8_t s, uint8_t l);
+// Convert a 8-bit HSL value into a 12-bit RGB value
+void ledsHSLToRGB(uint8_t inh, uint8_t ins, uint8_t inl, uint16_t & outr, uint16_t & outg, uint16_t & outb);
 
 //----------------------------------------------------------------------------------------
 // Constants

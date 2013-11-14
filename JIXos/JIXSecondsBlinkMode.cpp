@@ -18,24 +18,16 @@
 //----------------------------------------------------------------------------------------
 // Second Mode with Tetris-like display
 //----------------------------------------------------------------------------------------
+#include "JIXLEDS.h"
+#include "JIXSecondsBlinkMode.h"
 
-//----------------------------------------------------------------------------------------
-// Public API
-//----------------------------------------------------------------------------------------
-
-unsigned int secondsBlinkMode(uint8_t hourLeft, 
-                              uint8_t hourRight, 
-                              uint8_t minuteLeft, 
-                              uint8_t minuteRight, 
-                              uint8_t secondLeft, 
-                              uint8_t secondRight, 
-                              uint8_t luminosity,
-                              bool    hold);
-
-                           
 //----------------------------------------------------------------------------------------
 // Externs
 //----------------------------------------------------------------------------------------
+
+// TODO: fix this
+void secondsGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t pieceNumber, const uint8_t ** pieces, uint8_t piecesSize, uint8_t luminosity, uint8_t color);
+
 
 extern const unsigned int standardThreesSize;
 extern const unsigned int standardSixSize;

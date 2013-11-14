@@ -16,52 +16,31 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //----------------------------------------------------------------------------------------
-// Startup splash
+// RGB LEDs Management
 //----------------------------------------------------------------------------------------
+#ifndef JIX_LEDS_H
+#define JIX_LEDS_H
+
+#include <Arduino.h>
 
 //----------------------------------------------------------------------------------------
 // Public API
 //----------------------------------------------------------------------------------------
 
-void splashStartup();
+// Initialize LEDS
+void ledsInit();  
 
+// Call before updating the LEDs
+void ledsBegin();
 
-//----------------------------------------------------------------------------------------
-// Public API Implementation
-//----------------------------------------------------------------------------------------
+// Call after updating the LEDs
+void ledsEnd();
 
-void splashStartup()
-{
-  Serial.println(F("Splash..."));
-  uint8_t h = 0;
-  uint8_t l = 64;
-  
-  for (uint8_t i=0; i<36; i++)
-  {
-    /*Serial.print("l: ");
-    Serial.println((unsigned int)l);*/
-    
-    ledsBegin();
-    
-    for (uint8_t led=1; led<=27; led++)
-    {
-      ledsSetColor(led, h, 255, l);
-      
-      h += 20;
-      if (h >= 255)
-        h = 0;
-    }
-    
-    ledsEnd();
-    
-    if (i > 21)
-    {
-      l -= 4;
-      delay(20);
-    }
-    else
-    {
-      delay(50);
-    } 
-  }
-}
+// Set the HSL color of the LED #ledNumber. ledNumber is in [1..27]
+void ledsSetColor(uint8_t ledNumber, uint8_t h, uint8_t s, uint8_t l);
+
+// Set the RGB color of the LED #ledNumber
+void ledsSetRGBColor(uint8_t ledNumber, uint8_t r, uint8_t g, uint8_t b);
+
+#endif
+

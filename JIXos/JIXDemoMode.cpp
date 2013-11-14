@@ -18,26 +18,22 @@
 //----------------------------------------------------------------------------------------
 // Demo mode cycling between "interesting" modes
 //----------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------
-// Public API
-//----------------------------------------------------------------------------------------
-
-unsigned int demoMode(uint8_t hourLeft, 
-                      uint8_t hourRight, 
-                      uint8_t minuteLeft, 
-                      uint8_t minuteRight, 
-                      uint8_t secondLeft, 
-                      uint8_t secondRight, 
-                      uint8_t luminosity,
-                      bool    hold);
-
+#include "JIXDemoMode.h"
                            
 //----------------------------------------------------------------------------------------
 // Externs
 //----------------------------------------------------------------------------------------
 
-// NOTHING FOR NOW
+const unsigned int globalNbModes = 14; // TODO: fix this
+
+extern unsigned int (*globalModeFunctions[globalNbModes]) (uint8_t hourLeft, 
+                                                           uint8_t hourRight, 
+                                                           uint8_t minuteLeft, 
+                                                           uint8_t minuteRight, 
+                                                           uint8_t secondLeft, 
+                                                           uint8_t secondRight, 
+                                                           uint8_t luminosity,
+                                                           bool    hold);
 
 //----------------------------------------------------------------------------------------
 // Variables (to store current state of pieces for hold mode)

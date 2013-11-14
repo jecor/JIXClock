@@ -16,44 +16,18 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //----------------------------------------------------------------------------------------
-// Buttons management
+// Startup splash
 //----------------------------------------------------------------------------------------
+#ifndef JIX_SPLASH_H
+#define JIX_SPLASH_H
+
+#include <Arduino.h>
 
 //----------------------------------------------------------------------------------------
 // Public API
 //----------------------------------------------------------------------------------------
 
-void buttonsInit();
+void splashStartup();
 
-bool buttonsGetModeState();
-
-bool buttonsGetIncrementState();
-
-//----------------------------------------------------------------------------------------
-// Constants
-//----------------------------------------------------------------------------------------
-
-const unsigned int SETH_PIN = 4;
-const unsigned int SETM_PIN = 12;
-
-//----------------------------------------------------------------------------------------
-// Implementation
-//----------------------------------------------------------------------------------------
-
-void buttonsInit()
-{
-  pinMode(SETH_PIN, INPUT);
-  pinMode(SETM_PIN, INPUT);
-}
-
-bool buttonsGetModeState()
-{
-   return (digitalRead(SETH_PIN) == 0);
-}
-
-bool buttonsGetIncrementState()
-{
-  return (digitalRead(SETM_PIN) == 0);
-}
-
+#endif
 

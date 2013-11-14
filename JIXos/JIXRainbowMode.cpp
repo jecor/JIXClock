@@ -18,37 +18,12 @@
 //----------------------------------------------------------------------------------------
 // Rainbow Mode with Tetris-like display
 //----------------------------------------------------------------------------------------
+#include "JIXLEDS.h"
+#include "JIXRainbowMode.h"
 
 //----------------------------------------------------------------------------------------
-// Public API
-//----------------------------------------------------------------------------------------
-
-unsigned int rainbowModeFast(uint8_t hourLeft, 
-                             uint8_t hourRight, 
-                             uint8_t minuteLeft, 
-                             uint8_t minuteRight, 
-                             uint8_t secondLeft, 
-                             uint8_t secondRight, 
-                             uint8_t luminosity,
-                             bool    hold);
-
-unsigned int rainbowModeMedium(uint8_t hourLeft, 
-                               uint8_t hourRight, 
-                               uint8_t minuteLeft, 
-                               uint8_t minuteRight, 
-                               uint8_t secondLeft, 
-                               uint8_t secondRight, 
-                               uint8_t luminosity,
-                               bool    hold);
-
-unsigned int rainbowModeSlow(uint8_t hourLeft, 
-                             uint8_t hourRight, 
-                             uint8_t minuteLeft, 
-                             uint8_t minuteRight, 
-                             uint8_t secondLeft, 
-                             uint8_t secondRight, 
-                             uint8_t luminosity,
-                             bool    hold);                     
+// Private functions
+//----------------------------------------------------------------------------------------                    
                          
 void rainbowMode(uint8_t hourLeft, 
                  uint8_t hourRight, 
@@ -58,6 +33,14 @@ void rainbowMode(uint8_t hourLeft,
                  uint8_t secondRight, 
                  uint8_t luminosity,
                  bool    hold);
+                 
+void rainbowGenericDisplay(uint8_t ledStartNumber, 
+                           uint8_t value, 
+                           uint8_t pieceNumber, 
+                           const uint8_t ** pieces, 
+                           uint8_t piecesSize, 
+                           uint8_t h, 
+                           uint8_t luminosity);
 
 //----------------------------------------------------------------------------------------
 // Externs
@@ -254,3 +237,4 @@ void rainbowGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t pieceN
     } 
   }
 }
+

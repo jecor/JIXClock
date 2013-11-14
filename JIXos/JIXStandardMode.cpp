@@ -18,46 +18,21 @@
 //----------------------------------------------------------------------------------------
 // Standard Mode with Tetris-like display
 //----------------------------------------------------------------------------------------
+#include "JIXLEDS.h"
+#include "JIXStandardMode.h"
 
 //----------------------------------------------------------------------------------------
-// Public API
+// Private functions
 //----------------------------------------------------------------------------------------
 
-unsigned int standardModeFast(uint8_t hourLeft, 
-                              uint8_t hourRight, 
-                              uint8_t minuteLeft, 
-                              uint8_t minuteRight, 
-                              uint8_t secondLeft, 
-                              uint8_t secondRight, 
-                              uint8_t luminosity,
-                              bool    hold);
-                          
-unsigned int standardModeMedium(uint8_t hourLeft, 
-                                uint8_t hourRight, 
-                                uint8_t minuteLeft, 
-                                uint8_t minuteRight, 
-                                uint8_t secondLeft, 
-                                uint8_t secondRight, 
-                                uint8_t luminosity,
-                                bool    hold);
-                          
-unsigned int standardModeSlow(uint8_t hourLeft, 
-                              uint8_t hourRight, 
-                              uint8_t minuteLeft, 
-                              uint8_t minuteRight, 
-                              uint8_t secondLeft, 
-                              uint8_t secondRight, 
-                              uint8_t luminosity,
-                              bool    hold);
-                          
-void standardMode(uint8_t hourLeft, 
-                  uint8_t hourRight, 
-                  uint8_t minuteLeft, 
-                  uint8_t minuteRight, 
-                  uint8_t secondLeft, 
-                  uint8_t secondRight, 
-                  uint8_t luminosity,
-                  bool    hold);
+void standardGenericDisplay(uint8_t ledStartNumber, 
+                            uint8_t value, 
+                            uint8_t pieceNumber, 
+                            const uint8_t ** pieces, 
+                            uint8_t piecesSize, 
+                            uint8_t h, 
+                            uint8_t s, 
+                            uint8_t l);
 
 //----------------------------------------------------------------------------------------
 // Constants
@@ -867,3 +842,4 @@ void standardGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t piece
       ledsSetColor(ledStartNumber + ledOffset, 0, 0, 0);
   }
 }
+
