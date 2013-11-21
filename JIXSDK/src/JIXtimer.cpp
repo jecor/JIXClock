@@ -20,6 +20,7 @@
 #include "SDL.h"
 #include "JIXhal.h"
 #include "JIXrtc.h"
+#include "JIXconstants.h"
 
 SDL_Event user_event;
 

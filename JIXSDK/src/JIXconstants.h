@@ -16,12 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef JIX_CONSTANTS_H
+#define JIX_CONSTANTS_H
+
 //-----------------------------------------------------------------
-// Functions
+// Constants
 //-----------------------------------------------------------------
+static const char *       memoryFileName = "rtcmem.txt";
 
-void rtcLoadMemory(const std::string & filename);
-
-void rtcSaveMemory(const std::string & filename);
-
-void rtcSetArtificialTime(uint8_t hour, uint8_t minute, uint8_t second);
+#endif

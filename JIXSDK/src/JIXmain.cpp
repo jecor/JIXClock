@@ -28,6 +28,7 @@
 #include "JIXhal.h"
 #include "JIXgraphics.h"
 #include "JIXrtc.h"
+#include "JIXconstants.h"
 
 extern SDL_Surface  *main_screen;
 
