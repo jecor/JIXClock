@@ -20,6 +20,7 @@
 //----------------------------------------------------------------------------------------
 #include "JIXLEDS.h"
 #include "JIXSecondsMode.h"
+#include "JIXStandardConstants.h"
                            
 //----------------------------------------------------------------------------------------
 // Private functions
@@ -28,21 +29,6 @@
 void secondsGenericDisplay(uint8_t ledStartNumber, uint8_t value, uint8_t pieceNumber, const uint8_t ** pieces, uint8_t piecesSize, uint8_t luminosity, uint8_t color);
 
 void secondsGenericDisplay2(uint8_t ledStartNumber, uint8_t value, uint8_t value2, const uint8_t * pieces, uint8_t piecesSize, uint8_t luminosity, uint8_t color, uint8_t color2);
-
-//----------------------------------------------------------------------------------------
-// Externs
-//----------------------------------------------------------------------------------------
-
-extern const unsigned int standardThreesSize;
-extern const unsigned int standardSixSize;
-extern const unsigned int standardNinesSize;
-extern const uint8_t * standardThrees[];
-extern const uint8_t * standardSix[];
-extern const uint8_t * standardNines[];
-extern const uint8_t standardThreesNbPieces[];
-extern const uint8_t standardSixNbPieces[];
-extern const uint8_t standardNinesNbPieces[];
-extern const uint8_t standardColorDifference;
 
 //----------------------------------------------------------------------------------------
 // Constants
