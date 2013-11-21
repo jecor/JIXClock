@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------
 // JIXos: JIX Clock operating system
-// Copyright (c) 2010-2011 Jérôme Cornet <jerome@aldorande.net>
+// Copyright (c) 2010-2013 Jérôme Cornet <jerome@aldorande.net>
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
