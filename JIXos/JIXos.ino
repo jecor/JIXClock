@@ -75,6 +75,17 @@ const uint8_t LUMINOSITY_ADDRESS = 0;
 const uint8_t MODE_ADDRESS       = 1;
 
 //----------------------------------------------------------------------------------------
+// Prototypes
+//----------------------------------------------------------------------------------------
+
+void restoreSettings();
+unsigned int manageSetButtonsTask();
+unsigned int readRTCTask();
+unsigned int updateLEDSTasks();
+void delayTask(unsigned int taskID, unsigned int value);
+void kernel();
+
+//----------------------------------------------------------------------------------------
 // Main globals
 //----------------------------------------------------------------------------------------
 
