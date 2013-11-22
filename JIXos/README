@@ -1,6 +1,12 @@
 JIXos
 ----------------------------------------
 
+Requirements
+----------------------
+
+This version has been tested successfully with Arduino 1.0.5.
+It will not compile for sure with Arduino < 1.0.
+
 Creating a new mode
 ----------------------
 
