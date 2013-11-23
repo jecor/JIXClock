@@ -6,11 +6,9 @@ JIXSDK allows you to create and test "modes" for the JIXClock directly on your c
 Requirements
 ------------------------------
 
-- GCC compiler (tested with GCC 4.2.1)
+- GCC or clang compiler (tested with clang 3.3)
 - GNU Make
 - SDL (tested with 1.2.15). The sdl-config executable must be accessible with your PATH environment variable.
-- Java (tested with 1.6)
-- Java Compiler
 
 Creating/compiling a new mode
 ------------------------------

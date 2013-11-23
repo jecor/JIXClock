@@ -68,13 +68,6 @@ LD = $(CC)
 LDFLAGS = `sdl-config --libs`
 LDLIBS = 
 
-INO_PREPROCESS        = ino_preprocess
-INO_PREPROCESS_CLASS  = utils/$(INO_PREPROCESS).class
-INO_PREPROCESS_SRC    = utils/$(INO_PREPROCESS).java
-
-INO_SRC = $(OBJSDIR)/ino_src.cpp
-INO_OBJ = $(OBJSDIR)/arduino.oino
-
 SRCS         = $(SRCSFILES:%=$(SRCSDIR)/%)
 
 DEPS         = $(SRCS:%.cpp=$(DEPSDIR)/%.d)
