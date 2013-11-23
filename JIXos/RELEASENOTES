@@ -3,7 +3,7 @@ JIXos 1.2
 
 - Update for compatibility with Arduino 1.0.5
 
-We no longer relying on the prototype generation as it has been broken in this version and made support of Arduino evolution fragile.
+We are no longer relying on the prototype generation as it has been broken in this version and made support of Arduino evolution fragile.
 
 JIXos 1.1
 ----------------------------------------
