@@ -42,7 +42,7 @@
 //----------------------------------------------------------------------------------------
 
 const unsigned int globalVersionMajor = 1;
-const unsigned int globalVersionMinor = 1;
+const unsigned int globalVersionMinor = 2;
 
 const unsigned int globalNbModes = 14;
 
