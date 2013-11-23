@@ -10,7 +10,7 @@ It will not compile for sure with Arduino < 1.0.
 Creating a new mode
 ----------------------
 
-To create a new mode, open the project in the Arduino application (open the JIXos.ino file, which will open all associated files). Create a new tab with the desired name (by convention we use JIXZZZZZZZMode where ZZZZZZZZ is the name of your mode).
+To create a new mode, open the project in the Arduino application (open the JIXos.ino file, which will open all associated files). Create two new tabs for .h and .cpp files (by convention we use JIXZZZZZZZMode(.h/.cpp) where ZZZZZZZZ is the name of your mode).
 
 A mode should contain an entry point function with the following prototype:
 
