@@ -17,6 +17,7 @@
  */
 
 #include <stdio.h>
+#include <math.h>
 #include "SDL.h"
 #include "JIXhal.h"
 #include "JIXgraphics.h"
@@ -24,6 +25,7 @@
 //-----------------------------------------------------------------
 // Constants and global variables
 //-----------------------------------------------------------------
+const double GAMMA_CORRECTION = 0.2; // Gamma = 5!
 
 unsigned int  redLed[27];
 unsigned int  greenLed[27];
@@ -78,7 +80,7 @@ void ledsSetColor(uint8_t ledNumber, uint8_t h, uint8_t s, uint8_t l)
 // Set the RGB color of the LED #ledNumber
 void ledsSetRGBColor(uint8_t ledNumber, uint8_t r, uint8_t g, uint8_t b)
 {
-   unsigned long mr, mg, mb;
+   double mr, mg, mb;
    
    mr = r;
    mg = g;
@@ -95,13 +97,15 @@ void ledsSetRGBColor(uint8_t ledNumber, uint8_t r, uint8_t g, uint8_t b)
      // The result would be thus ugly on a computer screen
      // (127 = white for the eye on JIXClock, but gray on
      // computer screen).
-     // To fix this, we multiply the values by 2.
+     // To fix this, we use a gamma.
      
      if (mr < 127)
      {
-      mr *= 2;
-      mg *= 2;
-      mb *= 2;
+       mr = pow(mr*2/256, GAMMA_CORRECTION)*255;
+       
+       // Remember: mr == mg == mb
+       
+       mb = mg = mr;
      }
      else
      {
@@ -116,9 +120,9 @@ void ledsSetRGBColor(uint8_t ledNumber, uint8_t r, uint8_t g, uint8_t b)
       return;
    }
    
-   redLed[ledNumber-1] = mr;
-   greenLed[ledNumber-1] = mg;
-   blueLed[ledNumber-1] = mb;
+   redLed[ledNumber-1] = (unsigned int)mr;
+   greenLed[ledNumber-1] = (unsigned int)mg;
+   blueLed[ledNumber-1] = (unsigned int)mb;
 }
 
 //----------------------------------------------------------------------------------------
@@ -129,10 +133,13 @@ void ledsSetRGBColor(uint8_t ledNumber, uint8_t r, uint8_t g, uint8_t b)
 void ledsHSLToRGB(uint8_t inh, uint8_t ins, uint8_t inl, uint16_t & outr, uint16_t & outg, uint16_t & outb)
 {
    double h, sl, l;
-   
+      
    h = inh/256.0; // allow inh = 255
    sl = ins/255.0;
-   l = inl/255.0;
+   l = inl/256.0; // allow correct behavior with inl = 128 (see *2 later)
+   
+   // Gamma correction
+   l = pow(l*2, GAMMA_CORRECTION)/2;
    
    double v;
    double r,g,b;
