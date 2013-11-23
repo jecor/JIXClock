@@ -140,7 +140,7 @@ bool rtcCheckTime(uint8_t hour, uint8_t minute, uint8_t second)
    return true;
 }
 
-uint8_t rtcGetMemory(unsigned int address)
+uint8_t rtcGetMemory(uint8_t address)
 {
    if (address < rtcMemorySize)
    {
@@ -150,7 +150,7 @@ uint8_t rtcGetMemory(unsigned int address)
    return 0; 
 }
 
-void rtcSetMemory(unsigned int address, uint8_t data)
+void rtcSetMemory(uint8_t address, uint8_t data)
 {
    if (address < rtcMemorySize)
       rtcMemory[address] = data;
