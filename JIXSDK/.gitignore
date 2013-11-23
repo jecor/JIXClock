@@ -4,4 +4,6 @@ JIXsimulator
 .objs
 .deps_ino
 .objs_ino
+.deps_ino_cpp
+.objs_ino_cpp
 *.class
