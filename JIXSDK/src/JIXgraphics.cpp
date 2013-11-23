@@ -80,9 +80,35 @@ void ledsSetRGBColor(uint8_t ledNumber, uint8_t r, uint8_t g, uint8_t b)
 {
    unsigned long mr, mg, mb;
    
-   mr = r << 4;
-   mg = g << 4;
-   mb = b << 4;
+   mr = r;
+   mg = g;
+   mb = b;
+   
+   if ((mr == mg) && (mg == mb))
+   {
+     // Warning: big trick!
+     // If the color is actually a variant of gray,
+     // it is likely that the JIXos code will restrict
+     // itself to 0..127 as possible values 
+     // (otherwise this would not follow luminosity of LEDs
+     // when driven using ledsSetHSLColor()).
+     // The result would be thus ugly on a computer screen
+     // (127 = white for the eye on JIXClock, but gray on
+     // computer screen).
+     // To fix this, we multiply the values by 2.
+     
+     if (mr < 127)
+     {
+      mr *= 2;
+      mg *= 2;
+      mb *= 2;
+     }
+     else
+     {
+       // We have to saturate value to 255 for mr = mg = mb = 127
+       mr = mg = mb = 255;
+     }
+   }
    
    if (ledNumber > 27)
    {
@@ -99,7 +125,7 @@ void ledsSetRGBColor(uint8_t ledNumber, uint8_t r, uint8_t g, uint8_t b)
 // Low-Level Implementation
 //----------------------------------------------------------------------------------------
 
-// Convert a 8-bit HSL value into a 12-bit RGB value
+// Convert a 8-bit HSL value into a 8-bit RGB value
 void ledsHSLToRGB(uint8_t inh, uint8_t ins, uint8_t inl, uint16_t & outr, uint16_t & outg, uint16_t & outb)
 {
    double h, sl, l;
