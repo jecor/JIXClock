@@ -1,0 +1,23 @@
+JIXos 1.2
+----------------------------------------
+
+- Update for compatibility with Arduino 1.0.5
+
+We no longer relying on the prototype generation (except for main .ino file), as
+it has been broken in this version and made support of Arduino evolution fragile.
+
+JIXos 1.1
+----------------------------------------
+
+- Update for compatibility with Arduino 1.0
+
+- New Demo Mode: cycle through the various modes (except very strange modes like
+Seconds/Torch/...)
+
+- Reduced RAM consumption by moving some constants to Flash memory
+- Various Bug fixes (raised by compilation warnings, etc.)
+
+JIXos 1.0
+----------------------------------------
+
+- Initial public version
