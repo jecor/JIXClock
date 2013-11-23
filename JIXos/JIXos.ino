@@ -237,8 +237,10 @@ unsigned int manageSetButtonsTask()
             
           globalCorrectionOverride = true;
             
+          // globalMode is stored internally from 0..globalNbModes-1
+          // but from a user perspective, mode numbers start at 1
           Serial.print(F("New mode: "));
-          Serial.println(globalMode);
+          Serial.println(globalMode+1);
         }
       }
     }
